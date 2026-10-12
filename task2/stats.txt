@@ -1,0 +1,59 @@
+  Окно в 1 инструкцию:
+  [  24144424] (11.08%)  llvm.fmuladd.f32 <- fadd
+  [  18403230] ( 8.44%)  llvm.fmuladd.f32 <- fdiv
+  [  18255774] ( 8.37%)  llvm.fmuladd.f32 <- <const>
+  [  12810991] ( 5.88%)  add <- <const>
+  [  12367487] ( 5.67%)  icmp <- <const>
+  [  12219668] ( 5.61%)  llvm.fmuladd.f32 <- fmul
+  [  12072212] ( 5.54%)  fneg <- fmul
+  [  12072212] ( 5.54%)  fmul <- llvm.fmuladd.f32
+  [   6479218] ( 2.97%)  add <- add
+  [   6331773] ( 2.90%)  icmp <- add
+
+  Окно в 2 инструкции:
+  [  12072212] ( 5.54%)  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv
+  [   6331773] ( 2.90%)  add <- add  ->  add <- <const>
+  [   6183933] ( 2.84%)  icmp <- add  ->  icmp <- <const>
+  [   6183562] ( 2.84%)  llvm.fmuladd.f32 <- fmul  ->  llvm.fmuladd.f32 <- <const>
+  [   6183562] ( 2.84%)  llvm.fmuladd.f32 <- <const>  ->  fcmp <- llvm.fmuladd.f32
+  [   6183562] ( 2.84%)  fcmp <- llvm.fmuladd.f32  ->  fcmp <- <const>
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  fneg <- fmul
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  llvm.fmuladd.f32 <- fadd
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg
+
+  Окно в 3 инструкции:
+  [   6183562] ( 2.84%)  llvm.fmuladd.f32 <- fmul  ->  llvm.fmuladd.f32 <- <const>  ->  fcmp <- llvm.fmuladd.f32
+  [   6183562] ( 2.84%)  llvm.fmuladd.f32 <- <const>  ->  fcmp <- llvm.fmuladd.f32  ->  fcmp <- <const>
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  fneg <- fmul  ->  llvm.fmuladd.f32 <- fadd
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>
+  [   6183562] ( 2.84%)  llvm.fmuladd.f32 <- fmul  ->  llvm.fmuladd.f32 <- <const>  ->  fcmp <- llvm.fmuladd.f32  ->  fcmp <- <const>
+
+  Окно в 4 инструкции:
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  fneg <- fmul  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>  ->  fmul <- fadd
+  [   6036106] ( 2.77%)  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>  ->  fmul <- fadd  ->  fmul <- fdiv
+
+  Окно в 5 инструкций:
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  fneg <- fmul  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd
+  [   6036106] ( 2.77%)  fneg <- fmul  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fadd  ->  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fdiv  ->  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- fneg  ->  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>  ->  fmul <- fadd
+  [   6036106] ( 2.77%)  llvm.fmuladd.f32 <- <const>  ->  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>  ->  fmul <- fadd  ->  fmul <- fdiv
+  [   6036106] ( 2.77%)  fadd <- llvm.fmuladd.f32  ->  fadd <- <argument const>  ->  fmul <- fadd  ->  fmul <- fdiv  ->  fmul <- <const>
+  [   6036106] ( 2.77%)  fadd <- <argument const>  ->  fmul <- fadd  ->  fmul <- fdiv  ->  fmul <- <const>  ->  llvm.fmuladd.f32 <- fmul

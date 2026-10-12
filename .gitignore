@@ -1,1 +1,5 @@
 .idea
+/CMakeLists.txt
+/task2/log.txt
+/task2/libPass.so
+/task2/app
